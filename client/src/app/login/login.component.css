@@ -1,0 +1,13 @@
+#login{
+    width: 80vw;
+    max-width: 600px;
+}
+.full-width{
+    width: 100%;
+
+}
+mat-card-actions{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
