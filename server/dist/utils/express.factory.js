@@ -5,6 +5,7 @@ const bp = require("body-parser");
 const morgan = require("morgan");
 const helmet = require("helmet");
 const cors = require("cors");
+const token = require("../token/passport");
 const routes = require("./routes");
 const chalk = require('chalk');
 function init() {
@@ -21,6 +22,7 @@ function init() {
     }));
     server.use(helmet());
     server.use(cors());
+    token.init();
     routes.init(server);
     return server;
 }

@@ -1,14 +1,14 @@
 'use strict'
 
 import { ValidationErrors } from "../utils/error";
-import { mockedUsers, User } from "../user/user";
+import { mockedUsers, User } from "./user";
 
 
 export interface ILoginRequest{
     login?: string;
     password?: string;
 }
-export async function login(body: ILoginRequest):Promise<User>{
+export async function login(body: ILoginRequest):Promise<string>{
 
     try {
         body = await validateLogin(body);
@@ -22,7 +22,7 @@ export async function login(body: ILoginRequest):Promise<User>{
         if(!user.authenticate(body.password || "")){
             throw {message:"Error en la contraseña"}
         }
-        return Promise.resolve(user);
+        return Promise.resolve(user.getId());
     } catch (error) {
         return Promise.reject(error);
     }

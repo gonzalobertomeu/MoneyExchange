@@ -9,11 +9,15 @@ export function getConfig(environment:any){
         dotenv.config();
 
         config = {
-            port: process.env.PORT || "3000"
+            port: process.env.PORT || "3000",
+            secret: process.env.SECRET || "mysecret"
         }
     }
+
+    return config;
 }
 
 export interface Config{
-    port: String;
+    port: string;
+    secret: string;
 }

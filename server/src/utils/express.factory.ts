@@ -5,6 +5,7 @@ import * as bp from 'body-parser';
 import * as morgan from 'morgan';
 import * as helmet from 'helmet';
 import * as cors from 'cors';
+import * as token from '../token/passport';
 
 
 import * as routes from "./routes";
@@ -29,6 +30,8 @@ export function init(){
 
     server.use(helmet());
     server.use(cors());
+
+    token.init();
 
     routes.init(server);
     
