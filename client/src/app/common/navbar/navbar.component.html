@@ -1,20 +1,25 @@
 <div id="navbar">
   <div id="logo">
-    Logo
+    <h3>
+      MoneyExchange
+    </h3>
   </div>
 
-  <button mat-icon-button id="menu" [matMenuTriggerFor]="menu">
-    <mat-icon>more_vert</mat-icon>
-  </button>
-  <mat-menu #menu="matMenu">
-    <button mat-menu-item routerLink="/home">
-      <mat-icon>home</mat-icon>
-      <span>Home</span>
+  <nav *ngIf="isLogged">
+    <button mat-icon-button id="menu" [matMenuTriggerFor]="menu">
+      <mat-icon>more_vert</mat-icon>
     </button>
-    <button mat-menu-item routerLink="/login">
-      <mat-icon>lock</mat-icon>
-      <span>Logout</span>
-    </button>
-  </mat-menu>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item routerLink="/home">
+        <mat-icon>home</mat-icon>
+        <span>Home</span>
+      </button>
+      <button mat-menu-item (click)="logout()">
+        <mat-icon>lock</mat-icon>
+        <span>Logout</span>
+      </button>
+    </mat-menu>
+  </nav>
+
   
 </div>
