@@ -10,7 +10,7 @@ export async function create(userId:string): Promise<string>{
         mockedTokens.push(token);
         return Promise.resolve(passport.getToken(token));
     } catch (error) {
-        return Promise.reject(error);
+        return Promise.reject({message:"No se pudo crear token"});
     }
 }
 

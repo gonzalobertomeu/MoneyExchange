@@ -10,7 +10,9 @@ export function getConfig(environment:any){
 
         config = {
             port: process.env.PORT || "3000",
-            secret: process.env.SECRET || "mysecret"
+            secret: process.env.SECRET || "mysecret",
+            urlPrice: process.env.PRICE_URL || "http://api.estadisticasbcra.com",
+            tokenPrice: process.env.PRICE_TOKEN || ""
         }
     }
 
@@ -20,4 +22,6 @@ export function getConfig(environment:any){
 export interface Config{
     port: string;
     secret: string;
+    urlPrice: string;
+    tokenPrice: string;
 }

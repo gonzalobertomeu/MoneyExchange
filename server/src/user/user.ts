@@ -43,6 +43,7 @@ export class User{
 }
 
 export let mockedUsers: User[] = [];
-mockedUsers.push(new User("gonzalo","berto2455"));
-mockedUsers.push(new User("gonzo","homero"));
+mockedUsers.push(new User("guest","guest"));
+mockedUsers.push(new User("admin","admin"));
+mockedUsers.push(new User("user","password"));
 
