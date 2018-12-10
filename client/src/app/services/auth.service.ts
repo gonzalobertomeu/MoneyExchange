@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { map, tap } from "rxjs/operators";
+import { environment } from "../../environments/environment";
 
 const headers = {
   headers: new HttpHeaders({
@@ -16,6 +17,9 @@ export class AuthService {
 
   private currentUserSubjet: BehaviorSubject<Token>;
   public currentUser: Observable<Token>;
+
+  private loginPath: string = '/login';
+  private logoutPath: string = '/logout';
 
 
   constructor(private http: HttpClient) {
@@ -32,7 +36,7 @@ export class AuthService {
   }
 
   login(send: Login):Observable<any>{
-    return this.http.post<Token>("http://192.168.10.105:3000/login",send,headers).pipe(
+    return this.http.post<Token>(environment.backendURL+this.loginPath,send,headers).pipe(
       map(token=>{
         if (token && token.token !=""){
           localStorage.setItem('token',JSON.stringify(token));
@@ -43,9 +47,8 @@ export class AuthService {
   }
 
   logout(){
-    return this.http.get<{message:string}>("http://192.168.10.105:3000/logout").pipe(tap(
+    return this.http.get<{message:string}>(environment.backendURL+this.logoutPath).pipe(tap(
       ()=>{
-        console.log("Not logged");
         localStorage.removeItem('token');
         this.currentUserSubjet.next({token:null});
       }

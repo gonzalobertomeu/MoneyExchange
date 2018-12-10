@@ -26,7 +26,6 @@ export class LoginComponent implements OnInit {
   });
 
   onSubmit(){
-    console.log("Submitted");
     
     this.auth.login(this.loginForm.value).subscribe(
       token=>{
@@ -34,7 +33,10 @@ export class LoginComponent implements OnInit {
         this.router.navigate(['home']);
       },
       err=>{
-        this.snackBar(err.error.error.message);
+        if(err.error.error.message){
+          this.snackBar(err.error.error.message);
+        }
+        console.log(err);
       }
       );
   }

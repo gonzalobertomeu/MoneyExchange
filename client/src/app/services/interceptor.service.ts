@@ -12,7 +12,6 @@ export class InterceptorService implements HttpInterceptor{
   constructor(private auth:AuthService) {}
 
   intercept(request: HttpRequest<any>,next: HttpHandler):Observable<HttpEvent<any>>{
-    console.log("Intercepting");
     let currentUser = this.auth.getCurrentUser();
     if (currentUser && currentUser.token){
       request = request.clone({

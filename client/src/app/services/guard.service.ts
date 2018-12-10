@@ -15,7 +15,6 @@ export class GuardService implements CanActivate{
       return true;
     }
     this.router.navigate(['login']);
-    console.log("Guard activated");
     return false;
   }
 }

@@ -1,3 +1,67 @@
-<p>
-  home works!
-</p>
+<!-- <mat-card>
+  <mat-card-header>
+    <mat-card-title>
+      Cotización de Dolar Estadounidense
+    </mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <p>
+      <strong>US$:</strong> {{dolar.v}}
+    </p>
+    <p>
+      <strong>Ult. actualización:</strong> {{dolar.d | date}}
+    </p>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-raised-button color="primary">Actualizar</button>
+    <button mat-raised-button color="accent" (click)="openDialog()">Establecer cambio personalizado</button>
+  </mat-card-actions>
+</mat-card> -->
+<div class="wrapper">
+  
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title><strong>US$ 1:</strong> AR$ {{dolar.v}}</mat-panel-title>
+      <mat-panel-description>
+        <strong>Fecha:</strong> {{dolar.d | date}}
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <div class="tasa">
+      <mat-form-field>
+        <input type="text" matInput placeholder="Nueva tasa de cambio" #nuevaTasa>
+      </mat-form-field>
+      <button mat-raised-button color='accent' (click)="setExchangeRate(nuevaTasa.value);nuevaTasa.value=''">Establecer</button>
+      <button mat-raised-button color='primary' (click)="getDolar()">Actualizar</button>
+    </div>
+  </mat-expansion-panel>
+  
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>
+        Conversor:
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="conversor">
+        <mat-form-field>
+          <form>
+            <input type="text" name="dolarinput" matInput placeholder="US$" [(ngModel)]="dolarinput">
+          </form>
+        </mat-form-field>
+        <mat-icon>keyboard_arrow_right</mat-icon>
+        <strong>{{ dolarinput * dolar.v }}</strong>
+      </div>
+        <mat-divider></mat-divider>
+      <div class="conversor">
+        <mat-form-field>
+            <form>
+              <input type="text" name="argentinosinput" matInput placeholder="AR$" [(ngModel)]="argentinosinput">
+            </form>
+          </mat-form-field>
+          <mat-icon>keyboard_arrow_right</mat-icon>
+          <strong>{{ argentinosinput / dolar.v }}</strong>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+</div>  
