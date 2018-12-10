@@ -1,17 +1,17 @@
 <mat-card id="login">
   <mat-card-header>
     <mat-card-title>
-      Bienvenido a MoneyExchange!
+      Bienvenido a Money Exchange Rate!
     </mat-card-title>
   </mat-card-header>
   
   <mat-card-content>
     <form class="login-form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
       <mat-form-field class="full-width">
-        <input type="text" matInput placeholder="Username" formControlName="login">
+        <input type="text" matInput placeholder="Usuario" formControlName="login">
       </mat-form-field>
       <mat-form-field class="full-width">
-          <input type="password" matInput placeholder="Password" formControlName="password">
+          <input type="password" matInput placeholder="Contraseña" formControlName="password">
         </mat-form-field>
 
         <button mat-raised-button color="accent" type="submit" [disabled]="!loginForm.valid">Login</button>
